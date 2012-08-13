@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block mainpage %}
+<div data-role="page">
+	{% include 'header.html' %}
+	{% include 'messages/nav.html' %}
+	<div data-role="content"  class="ui-content" role="main">		
+		<div>
+			<form action="compose" method="post">
+				<label for="recipient">Specify Recipient</label>
+				<input type="text" name="recipient" id="recipient" />
+				<label for="title">Message Title</label>
+				<input type="text" name="title" id="title" />				
+				<label for="body">Message Body</label>
+				<textarea id="body" name="body"> </textarea>
+				<div data-role="controlgroup" data-type="horizontal">
+					<input id="send" type="submit" value="send"/>
+					<input id="save" type="button" value="save"/>
+					<input id="cancel" type="button" value="cancel"/>
+				</div>
+			</form>
+		</div>		
+	</div>
+	{% include 'footer.html' %}
+</div>
+{% endblock %}
+{% block dialogs %}
+{% include 'dialogs.html' %}
+{% endblock %} 

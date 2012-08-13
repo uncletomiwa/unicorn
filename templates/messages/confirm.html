@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block mainpage %}
+<div data-role="page">
+	{% include 'header.html' %}
+	<div data-role="content"  class="ui-content" role="main">
+		<nav data-role="navbar">
+			<ul>
+				<li>compose</li>
+				<li>inbox</li>
+				<li>sent</li>
+			</ul>
+		</nav>
+		<div>
+			<ul data-role="listview">
+				<li>Sender: {{ message['sender'] }}</li>
+				<li>Recipient: {{ message['recipient'] }}</li>
+				<li>Title: {{ message['title'] }}</li>
+				<li>Body: {{ message['body'] }}</li>
+			</ul>
+		</div>		
+		
+	</div>
+</div>
+{% endblock %}
+{% block dialogs %}
+{% include 'dialogs.html' %}
+{% endblock %} 

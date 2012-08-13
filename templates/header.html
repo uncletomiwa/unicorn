@@ -1,0 +1,7 @@
+<div data-role="header" role="banner">
+	<a data-icon="home" class="ui-btn-left" href="/">!</a>
+	<h1>Time Tables</h1>
+	{% if user %}
+	{% else %} <a href="{{ sign_in }}" data-icon="gear" class="ui-btn-right" data-rel="dialog">sign in</a>
+	{% endif %}
+</div>

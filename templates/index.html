@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block mainpage %}
+<div data-role="page">
+	{% include 'header.html' %}
+	<div data-role="content"  class="ui-content" role="main">
+		<ul data-role="listview" data-theme="c">
+			<li data-role="divider"><h1>University Mobile Community</h1></li>
+			<li><a href="/timetables/">Time Tables</a></li>
+			<li><a href="events">Events</a></li>
+			<li><a href="courses">Course Information</a></li>
+			<li><a href="/messages/">Messages</a></li>
+			<li><a href="news">University News</a></li>
+		</ul>
+		<button>
+			Give Feedback
+		</button>
+	</div>
+</div>
+{% endblock %}
+{% block dialogs %}
+{% include 'dialogs.html' %}
+{% endblock %} 

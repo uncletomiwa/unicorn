@@ -1,0 +1,28 @@
+{% extends 'templates/base.html' %}
+{% block title %}Sign up!{% endblock %}
+{% block content %}
+<div data-role="page" >
+	<div data-role="header">
+		<h3>SignUp</h3>
+	</div>
+	<div data-role="content">
+		<p>
+			Hello {{ user_info.name }}
+			<br>
+			It appears you do not have an account with us
+			<br>
+			create one now
+		</p>
+		<form method="post" action="/verify">
+			<label for="username">Nick Name:</label>
+			<input type="text" id="username" name="username" value={{ user_info.username }} />
+			<label for="department">Department:</label>
+			<input type="text" id="department" name="department" />
+			<label for="level">Level:</label>
+			<input type="text" id="level" name="level" />
+			<label for="School">School</label>
+			<input type="text" id="school" name="school" />
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block mainpage %}
+<div data-role="page">
+	{% include 'header.html' %}
+	{% include 'messages/nav.html' %}
+	<div data-role="content"  class="ui-content" role="main">		
+		<ul data-role="listview">
+		{% for m in messages %}
+			<li><a href="show/{{ m.key() }}">
+				<h3>{{ m.sender }}</h3>
+				<p>{{ m.title }}</p>
+				</a></li>
+		{% endfor %}</ul>
+		
+	</div>
+	{% include 'footer.html' %}
+</div>
+{% endblock %}
+{% block dialogs %}
+{% include 'dialogs.html' %}
+{% endblock %}

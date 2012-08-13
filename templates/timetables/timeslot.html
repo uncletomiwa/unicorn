@@ -1,0 +1,72 @@
+{% extends 'templates/base.html' %}
+{% block title %}It works!{% endblock %}
+
+{% block content %}
+<div data-role="page" data-add-back-btn="true">
+	<div data-role="header" role="banner">
+		<h1>Py tables</h1>
+	</div>
+	<div data-role="content"  class="ui-content" role="main">
+		<p>
+			py tables supports the basic university time table. We hope to get feedback from you... thanks
+		</p>
+		<div>
+			<ul data-role="listview" data-theme="c" class=" ui-listview  ui-listview-inset ui-corner-all ui-shadow ">
+				<li >
+					<strong>From </strong>{{ timeslot.tfrom }} to {{ timeslot.tto }}
+					<br>
+				</li>
+				<li >
+					<strong>Title: </strong>{{ timeslot.course.title }}
+					<br>
+				</li>
+				<li >
+					{{ timeslot.course.level }}Level
+					<br>
+				</li>
+				<li >
+					<br>
+					{{ timeslot.course.desc }}
+					<br>
+				</li>
+				<li >
+					<strong>Synopsis: </strong>
+					<br>
+					{{ timeslot.course.synopsis }}
+				</li>
+			</ul>
+		</div>
+		<ul data-role="listview" data-theme="c" class=" ui-listview  ui-listview-inset ui-corner-all ui-shadow">
+			<li data-theme="b" data-role="list-divider" class="ui-btn ui-btn-icon-right ui-li ui-corner-top ui-btn-up-c"  >
+				Comments
+			</li>
+			{% for comment in comments %}
+			<li data-theme="c" class="ui-btn ui-li ui-btn-up-c">
+				<div class="ui-btn-inner ui-li" aria-hidden="true">
+					<div class="ui-btn-text">
+						<p class="ui-li-aside ui-li-desc">
+							<strong>9:18</strong>AM
+						</p>
+						<h3 class="ui-li-heading">{{ comment.author }}</h3>
+						<p class="ui-li-desc">
+							{{ comment }}
+						</p>
+						</a>
+					</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">
+				</div>
+			</li>
+			{% endfor %}
+			<li data-theme="c" class="ui-btn ui-li ui-btn-up-c">
+				<form method="post" action="comment">
+					<input type="hidden" name="key" id="key" value={{ timeslot.key() }} />
+					<textarea name="content" id="content" cols="*"></textarea>
+					<input type="submit" value="Give Feedback">
+				</form>
+			</li>
+		</ul>
+	</div>
+	<div data-role="footer">
+		<h4>...</h4>
+	</div>
+</div>
+{% endblock %} 
