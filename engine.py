@@ -26,6 +26,7 @@ app = webapp2.WSGIApplication([('/', public.views.MainPage),
                                 webapp2.Route('/comment', timetable.views.CommentPage),
                                 routes.PathPrefixRoute('/timeslot', [
                                  webapp2.Route('/', timetable.views.TimeslotPage),
+                                 webapp2.Route('/show/<key:\w+\-\w+>', timetable.views.ShowPage),
                                  webapp2.Route('/create', timetable.views.CreatePage)
                                 ]),
                                ]),

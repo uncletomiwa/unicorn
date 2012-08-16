@@ -1,5 +1,4 @@
 from google.appengine.ext import db
-from courses.models import Course
 # Create your db here.
 
 class Timeslot(db.Model):
@@ -9,9 +8,9 @@ class Timeslot(db.Model):
     day = db.StringProperty()
     venue= db.StringProperty()
     notes=db.StringProperty()
-    course = db.ReferenceProperty(Course)
+    course = db.StringProperty()
     def __unicode__(self):
-        return "from {0}:00 to {1}:00 on {2}".format(self.tfrom, self.tto, self.day)
+        return "{0}: {1}-{2}, {3} ".format(self.course, self.tfrom, self.tto, self.day)
 
 class Comment(db.Model):
     content = db.TextProperty()
