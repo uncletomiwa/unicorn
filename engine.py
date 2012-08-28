@@ -9,11 +9,12 @@ from google.appengine.api import users
 import webapp2
 import jinja2
 import os
-import public.views, timetable.views, messages.views
+import public.views, timetable.views, messages.views, events.views, test.views
 from webapp2_extras import routes
 
 
 globals = {'user': users.get_current_user(),
+           'theme': "b",
          'sign_in': users.create_login_url("/"),
          'sign_out': users.create_logout_url("/")}
 
@@ -21,6 +22,7 @@ base_path = os.path.dirname(__file__)
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(base_path + "/templates"))
 
 app = webapp2.WSGIApplication([('/', public.views.MainPage),
+                               ('/test', test.views.IndexPage),
                                routes.PathPrefixRoute('/timetables', [
                                 webapp2.Route('/', timetable.views.MainPage),
                                 webapp2.Route('/comment', timetable.views.CommentPage),
@@ -37,6 +39,10 @@ app = webapp2.WSGIApplication([('/', public.views.MainPage),
                                 webapp2.Route('/drafts', messages.views.DraftsPage),
                                 webapp2.Route('/compose', messages.views.ComposePage),
                                 webapp2.Route('/show/<key:\w+\-\w+>', messages.views.ShowPage),
+                               ]),
+                               routes.PathPrefixRoute('/events', [
+                                webapp2.Route('/', events.views.IndexPage),
+                                webapp2.Route('/show/<key:\w+\-\w+>', events.views.ShowPage),
                                ])
                                ],
                                 debug=True)

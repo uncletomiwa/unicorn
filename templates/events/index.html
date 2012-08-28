@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block mainpage %}
+<div data-role="page">
+	{% include 'header.html' %}
+	<div data-role="content"  class="ui-content" role="main">		
+		<ul data-role="listview">
+		{% for e in events %}
+			<li><a href="show/{{ e.key() }}">
+				<h3>{{ e.datetime }}</h3>
+				<p>{{ e.title }}</p>
+				</a></li>
+		{% endfor %}</ul>
+		
+	</div>
+	{% include 'footer.html' %}
+</div>
+{% endblock %}
+{% block dialogs %}
+{% include 'dialogs.html' %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block mainpage %}
+<div data-role="page">
+	{% include 'header.html' %}
+	{% include 'messages/nav.html' %}
+	<div data-role="content"  class="ui-content" role="main">
+		Title: {{ event.title }}
+		Details: {{ event.details }}
+		DateTime: {{ event.datetime }}s		
+	</div>
+	{% include 'footer.html' %}
+</div>
+{% endblock %}
+{% block dialogs %}
+{% include 'dialogs.html' %}
+{% endblock %} 
